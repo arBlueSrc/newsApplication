@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ir.majazi.sabtamval.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="ir.majazi.sabtamval.ScannerFragment"
+        android:label="ScannerFragment" >
+        <action
+            android:id="@+id/action_scannerFragment_to_addGoodFragment"
+            app:destination="@id/addGoodFragment" />
+        <action
+            android:id="@+id/action_scannerFragment_to_specificationsFragment"
+            app:destination="@id/specificationsFragment" />
+        <action
+            android:id="@+id/action_scannerFragment_to_trustFragment"
+            app:destination="@id/trustFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGoodFragment"
+        android:name="ir.majazi.sabtamval.AddGoodFragment"
+        android:label="AddGoodFragment" >
+        <action
+            android:id="@+id/action_addGoodFragment_to_addSpecificationsFragment"
+            app:destination="@id/addSpecificationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addSpecificationsFragment"
+        android:name="ir.majazi.sabtamval.AddSpecificationsFragment"
+        android:label="fragment_add_specifications"
+        tools:layout="@layout/fragment_add_specifications" >
+        <action
+            android:id="@+id/action_addSpecificationsFragment_to_confirmInformationFragment"
+            app:destination="@id/confirmInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmInformationFragment"
+        android:name="ir.majazi.sabtamval.ConfirmInformationFragment"
+        android:label="fragment_confirm_information"
+        tools:layout="@layout/fragment_confirm_information" >
+        <action
+            android:id="@+id/action_confirmInformationFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSpecificationsFragment"
+        android:name="ir.majazi.sabtamval.EditSpecificationsFragment"
+        android:label="fragment_edit_specifications"
+        tools:layout="@layout/fragment_edit_specifications" >
+        <action
+            android:id="@+id/action_editSpecificationsFragment_to_trustFragment"
+            app:destination="@id/trustFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specificationsFragment"
+        android:name="ir.majazi.sabtamval.SpecificationsFragment"
+        android:label="SpecificationsFragment" >
+        <action
+            android:id="@+id/action_specificationsFragment_to_editSpecificationsFragment"
+            app:destination="@id/editSpecificationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trustFragment"
+        android:name="ir.majazi.sabtamval.TrustFragment"
+        android:label="TrustFragment" />
+</navigation>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SabtAmval</string>
+    <string name="name_app">ثبت اموال</string>
+    <string name="description_login">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است</string>
+    <string name="hint_username_login">نام کاربری خود را وارد کنید</string>
+    <string name="hint_password_login">رمز عبور خود را وارد کنید</string>
+    <string name="button_sing_in_login">ورود</string>
+    <string name="good_type">نوع کالا خود را انتخاب کنید</string>
+    <string name="chose_store">انبار خود را انتخاب کنید</string>
+    <string name="chose_part">بخش خود را انتخاب کنید</string>
+    <string name="chose_person">شخص مورد نظر را انتخاب کنید</string>
+    <string name="todo">TODO</string>
+    <string name="warning">تذکر:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty">خالی</string>
+</resources>
