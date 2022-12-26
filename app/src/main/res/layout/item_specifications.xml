@@ -39,9 +39,10 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_baseline_border_color_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/materialTextView13" />
@@ -49,8 +50,9 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/shapeableImageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_4sdp"
             android:src="@drawable/ic_baseline_supervisor_account_24"
             app:layout_constraintStart_toEndOf="@+id/shapeableImageView2"
@@ -86,8 +88,7 @@
             android:fontFamily="@font/shabnam_bold"
             android:text="ویژگی های کالا:"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/materialTextView15"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView15" />
 
 
