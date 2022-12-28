@@ -1,4 +1,4 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.specification
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,35 +7,33 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.appbar.MaterialToolbar
-import ir.majazi.sabtamval.databinding.FragmentTrustBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import ir.majazi.sabtamval.R
+import ir.majazi.sabtamval.databinding.FragmentSpecificationsBinding
 
-class TrustFragment : Fragment() {
+@AndroidEntryPoint
+class SpecificationsFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentTrustBinding
-    private lateinit var viewModel: TrustViewModel
+    private lateinit var binding: FragmentSpecificationsBinding
+    private lateinit var viewModel: SpecificationsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTrustBinding.inflate(inflater)
+        binding = FragmentSpecificationsBinding.inflate(inflater)
         return binding.root
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar_main)
-        toolbar.title = "امانات"
+        toolbar.title = "مشخصات"
         toolbar.setNavigationOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
 
-
-        val arrayTrust: Array<String> =
-            arrayOf("علیرضا مدنی", "علی فاضلی", "وحید دانشمند", "آرش میرزایی", "علی حاضری")
-        dropDownAdapter(requireContext(),arrayTrust,binding.autoCompleteTrust)
     }
 }

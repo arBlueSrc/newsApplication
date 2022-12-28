@@ -1,4 +1,4 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.addGood
 
 import androidx.lifecycle.ViewModel
 

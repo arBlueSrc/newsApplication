@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="ir.majazi.sabtamval.LoginFragment"
+        android:name="ir.majazi.sabtamval.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/scannerFragment"
-        android:name="ir.majazi.sabtamval.ScannerFragment"
+        android:name="ir.majazi.sabtamval.ui.scanner.ScannerFragment"
         android:label="ScannerFragment" >
         <action
             android:id="@+id/action_scannerFragment_to_addGoodFragment"
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/addGoodFragment"
-        android:name="ir.majazi.sabtamval.AddGoodFragment"
+        android:name="ir.majazi.sabtamval.ui.addGood.AddGoodFragment"
         android:label="AddGoodFragment" >
         <action
             android:id="@+id/action_addGoodFragment_to_addSpecificationsFragment"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/addSpecificationsFragment"
-        android:name="ir.majazi.sabtamval.AddSpecificationsFragment"
+        android:name="ir.majazi.sabtamval.ui.addSpecification.AddSpecificationsFragment"
         android:label="fragment_add_specifications"
         tools:layout="@layout/fragment_add_specifications" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/confirmInformationFragment"
-        android:name="ir.majazi.sabtamval.ConfirmInformationFragment"
+        android:name="ir.majazi.sabtamval.ui.confirmInfo.ConfirmInformationFragment"
         android:label="fragment_confirm_information"
         tools:layout="@layout/fragment_confirm_information" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/editSpecificationsFragment"
-        android:name="ir.majazi.sabtamval.EditSpecificationsFragment"
+        android:name="ir.majazi.sabtamval.ui.EditSpecification.EditSpecificationsFragment"
         android:label="fragment_edit_specifications"
         tools:layout="@layout/fragment_edit_specifications" >
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/specificationsFragment"
-        android:name="ir.majazi.sabtamval.SpecificationsFragment"
+        android:name="ir.majazi.sabtamval.ui.specification.SpecificationsFragment"
         android:label="SpecificationsFragment" >
         <action
             android:id="@+id/action_specificationsFragment_to_editSpecificationsFragment"
@@ -73,6 +73,6 @@
     </fragment>
     <fragment
         android:id="@+id/trustFragment"
-        android:name="ir.majazi.sabtamval.TrustFragment"
+        android:name="ir.majazi.sabtamval.ui.trust.TrustFragment"
         android:label="TrustFragment" />
 </navigation>

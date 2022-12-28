@@ -1,7 +1,7 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.trust
 
 import androidx.lifecycle.ViewModel
 
-class LoginViewModel : ViewModel() {
+class TrustViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

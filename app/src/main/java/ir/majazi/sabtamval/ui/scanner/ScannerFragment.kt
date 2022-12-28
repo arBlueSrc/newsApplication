@@ -1,4 +1,4 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.scanner
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -12,10 +12,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.budiyev.android.codescanner.*
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentScannerBinding
+import ir.majazi.sabtamval.util.ProjectConsts.Companion.CAMERA_CODE
 
-private const val CAMERA_CODE = 101
-
+@AndroidEntryPoint
 class ScannerFragment : Fragment() {
 
     private lateinit var viewModel: ScannerViewModel

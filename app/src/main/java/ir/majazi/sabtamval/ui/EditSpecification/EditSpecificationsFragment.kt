@@ -1,4 +1,4 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.EditSpecification
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.appbar.MaterialToolbar
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentEditSpecificationsBinding
 
 
+@AndroidEntryPoint
 class EditSpecificationsFragment : Fragment() {
 
     private lateinit var binding: FragmentEditSpecificationsBinding

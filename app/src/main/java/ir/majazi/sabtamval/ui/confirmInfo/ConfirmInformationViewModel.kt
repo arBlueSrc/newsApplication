@@ -1,4 +1,4 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.confirmInfo
 
 import androidx.lifecycle.ViewModel
 

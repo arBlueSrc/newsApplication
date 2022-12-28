@@ -1,7 +1,7 @@
-package ir.majazi.sabtamval
+package ir.majazi.sabtamval.ui.login
 
 import androidx.lifecycle.ViewModel
 
-class ScannerViewModel : ViewModel() {
+class LoginViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }
