@@ -31,11 +31,15 @@ class ScannerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentScannerBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        Log.i("TAG", "codeScanner: onViewCreated")
+
 
         binding.fabScanner.setOnClickListener {
             Navigation.findNavController(view)
@@ -47,6 +51,10 @@ class ScannerFragment : Fragment() {
     }
 
     private fun codeScanner() {
+
+        Log.i("TAG", "codeScanner: method")
+
+
         codeScanner = CodeScanner(requireContext(), binding.scannerView)
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
@@ -57,9 +65,17 @@ class ScannerFragment : Fragment() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+            Log.i("TAG", "codeScanner: configured")
+
             decodeCallback = DecodeCallback {
-//                requireActivity().runOnUiThread{
-//                    Log.i("TAG", "codeScanner: ${it.text}")
+
+                Log.i("TAG", "callback: callback")
+
+                requireActivity().runOnUiThread{
+
+                    Log.i("TAG", "codeScanner: ${it.text}")
+
+                    Toast.makeText(requireContext(), it.text, Toast.LENGTH_SHORT).show()
 //                    if (it.text.isNotEmpty()){
 //                        Log.i("TAG", "codeScanner: ${it.text}")
 //                        val dialog= Dialog(requireContext())
@@ -90,7 +106,7 @@ class ScannerFragment : Fragment() {
 //                                .body()?.result
 //                        }
 //                    }
-//                }
+                }
             }
 
             errorCallback = ErrorCallback {
@@ -140,7 +156,7 @@ class ScannerFragment : Fragment() {
         when (requestCode) {
             CAMERA_CODE -> {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(requireContext(), "permission", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "دسترسی دوربین داده شد.", Toast.LENGTH_LONG).show()
                 }
             }
         }
