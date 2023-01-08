@@ -38,35 +38,14 @@
             android:id="@+id/mtv_type_good"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/shabnam"
             app:layout_constraintBottom_toBottomOf="@+id/materialTextView13"
             app:layout_constraintEnd_toStartOf="@+id/materialTextView13"
-            app:layout_constraintStart_toEndOf="@+id/imv_trust"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/materialTextView13"
             tools:text="سیستم رومیزی" />
 
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imv_edit_information"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:padding="@dimen/_10sdp"
-            android:src="@drawable/ic_baseline_border_color_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/materialTextView13" />
-
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imv_trust"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_4sdp"
-            android:src="@drawable/ic_baseline_supervisor_account_24"
-            app:layout_constraintStart_toEndOf="@+id/imv_edit_information"
-            app:layout_constraintTop_toTopOf="@+id/imv_edit_information" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/materialTextView15"
@@ -116,6 +95,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialTextView17"
             tools:listitem="@layout/item_good_property" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/shabnam_bold"
+            android:text="ویرایش"
+            app:icon="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="@+id/rv_good_property"
+            app:layout_constraintTop_toBottomOf="@+id/rv_good_property" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_lend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/shabnam_bold"
+            android:text="امانت دادن"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:backgroundTint="#246677"
+            app:icon="@drawable/ic_lend"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            app:layout_constraintTop_toBottomOf="@+id/rv_good_property" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_take_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/shabnam_bold"
+            android:text="پس گرفتن"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:backgroundTint="#BA1A1A"
+            app:icon="@drawable/ic_take_back"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            app:layout_constraintTop_toBottomOf="@+id/rv_good_property" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
