@@ -35,19 +35,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-                <com.google.android.material.textview.MaterialTextView
+                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView101"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_12sdp"
                     android:fontFamily="@font/shabnam_bold"
-                    android:text="شخص مورد نیاز:"
+                    android:text="شخص مورد نظر:"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_person_trust"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_4sdp"
@@ -70,6 +70,7 @@
 
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_store_trust"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_4sdp"
@@ -91,10 +92,11 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/materialTextView111"
                     app:layout_constraintTop_toBottomOf="@+id/materialTextView111"
-                    tools:text="بخش:" />
+                    android:text="بخش:" />
 
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_part_trust"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_4sdp"
@@ -136,7 +138,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView141"
+                    android:id="@+id/tv_type_trust"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_4sdp"
@@ -160,7 +162,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/materialTextView131" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/materialTextView161"
+                    android:id="@+id/tv_proprty_number_trust"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/shabnam"
@@ -184,6 +186,7 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_trust"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_8sdp"

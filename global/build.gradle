@@ -16,7 +16,7 @@ android {
         minSdk 21
         targetSdk 33
 
-        buildConfigField "String", "BASE_URL", "\"https://salehin.ir/api/\""
+        buildConfigField "String", "BASE_URL", "\"http://10.3.10.196/api/\""
         buildConfigField "String", "BASE_URL_IMAGE", "\"https://salehin.ir/\""
         buildConfigField "String", "MAIN_TOKEN", "\"564sgsfg21554gasga2sfg1548sgf\""
 

@@ -2,6 +2,7 @@ package ir.majazi.sabtamval.ui.scanner
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,21 +11,30 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.budiyev.android.codescanner.*
+import com.example.global.network.resource.Resource
+import com.example.global.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentScannerBinding
 import ir.majazi.sabtamval.util.ProjectConsts.Companion.CAMERA_CODE
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.nio.charset.Charset
+import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+
 
 @AndroidEntryPoint
 class ScannerFragment : Fragment() {
 
-    private lateinit var viewModel: ScannerViewModel
     private lateinit var codeScanner: CodeScanner
-    private lateinit var nationalCode: String
     private lateinit var binding: FragmentScannerBinding
+    private val viewModel: ScannerViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +48,7 @@ class ScannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.i("TAG", "codeScanner: onViewCreated")
+
 
 
         binding.fabScanner.setOnClickListener {
@@ -52,8 +62,6 @@ class ScannerFragment : Fragment() {
 
     private fun codeScanner() {
 
-        Log.i("TAG", "codeScanner: method")
-
 
         codeScanner = CodeScanner(requireContext(), binding.scannerView)
         codeScanner.apply {
@@ -65,47 +73,33 @@ class ScannerFragment : Fragment() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+
             Log.i("TAG", "codeScanner: configured")
+
 
             decodeCallback = DecodeCallback {
 
                 Log.i("TAG", "callback: callback")
 
                 requireActivity().runOnUiThread{
+                    codeScanner.stopPreview()
+//                    Log.i("TAG", "codeScanner: ${it.text.decrypt("X9vIyNiptseccxdC")}")
+//
+//
+//                    Toast.makeText(requireContext(), it.text.decrypt("X9vIyNiptseccxdC"), Toast.LENGTH_SHORT).show()
 
-                    Log.i("TAG", "codeScanner: ${it.text}")
+                    decrypt(it.text.toString())
+//                   decrypt1(it.text.toString(),"X9vIyNiptseccxdC")
 
-                    Toast.makeText(requireContext(), it.text, Toast.LENGTH_SHORT).show()
-//                    if (it.text.isNotEmpty()){
-//                        Log.i("TAG", "codeScanner: ${it.text}")
-//                        val dialog= Dialog(requireContext())
-//                        dialog.setContentView(R.layout.dialog_status)
-//                        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//                        dialog.window?.setLayout(_binding.root.width,_binding.root.height)
-//                        dialog.show()
-//                        codeScanner.stopPreview()
-//                        val textResultDialog=dialog.findViewById<TextView>(R.id.textViewDialog)
-//                        dialog.findViewById<Button>(R.id.buttonBacktoScanner)
-//                            .setOnClickListener(){
-//
-//                                dialog.cancel()
-//                                dialog.dismiss()
-//                                codeScanner.startPreview()
-//                            }
-//
-//                        nationalCode=it.text.toString().substring(48,it.text.lastIndexOf("'"))
-//                        Log.i("TAG", "codeScanner: $nationalCode")
-//
-//
-//                        val apiService: ApiService by lazy {
-//                            ApiClient.getRetrofit().create()
-//                        }
-//
-//                        lifecycleScope.launchWhenCreated {
-//                            textResultDialog.text=apiService.responseUser(nationalCode,getDataUser())
-//                                .body()?.result
-//                        }
-//                    }
+                    val directions =ScannerFragmentDirections
+                        .actionScannerFragmentToSpecificationsFragment(
+//                            it.text.decrypt("X9vIyNiptseccxdC")
+                            decrypt(it.text.toString())
+//                        decrypt2(requireContext(),it.text.toByteArray())
+                        )
+                    findNavController().navigate(directions)
+
+
                 }
             }
 
@@ -120,6 +114,53 @@ class ScannerFragment : Fragment() {
             codeScanner.startPreview()
         }
     }
+
+
+
+
+    private fun decrypt(dataToDecrypt: String): String {
+        val cipher: Cipher = Cipher.getInstance("AES/CBC/NoPadding")
+
+        val skeySpec = SecretKeySpec("X9vIyNiptseccxdC".toByteArray(), "aes-128-cbc")
+
+        val iv = IvParameterSpec("WHG7HsS84kIGvzzI".toByteArray())
+
+        cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv)
+
+        val decrypted = cipher.doFinal(Base64.decode(dataToDecrypt, Base64.DEFAULT)) //byte[]
+
+        val result = decrypted.toString(Charset.forName("UTF-8")).trim().replace("\u000E","")
+
+        return result
+    }
+
+
+
+    //check login user
+    private fun checkLogin(view: View) {
+
+            viewModel.getResponseScanner("1")
+            launchAndRepeatWithViewLifecycle {
+                viewModel.responseScanner.collect {
+                    when (it) {
+                        is Resource.Loading -> {}
+                        is Resource.Error -> {
+                            context?.toast("مشکل در دریافت اطلاعات")
+                        }
+                        is Resource.Success -> {
+
+
+                            withContext(Dispatchers.Main){
+                                Navigation.findNavController(view)
+                                    .navigate(R.id.action_scannerFragment_to_specificationsFragment)
+                            }
+//                                context?.toast("ok")
+                        }
+                        else -> {}
+                    }
+                }
+            }
+        }
 
     override fun onResume() {
         super.onResume()
@@ -161,4 +202,5 @@ class ScannerFragment : Fragment() {
             }
         }
     }
+
 }
