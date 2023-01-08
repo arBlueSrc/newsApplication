@@ -1,5 +1,8 @@
 package com.example.global.network
 
+import com.example.global.modules.app.model.AddProduct1
+import com.example.global.modules.app.model.DetailScanner
+import com.example.global.modules.app.model.Login
 import com.example.global.modules.app.model.forceupdate.ResponseForceUpdate
 import com.example.global.modules.category.model.allCats.ResponseCategory
 import com.example.global.modules.category.model.catPosts.ResponseCatPosts
@@ -26,21 +29,30 @@ interface ApiService {
 
     interface App {
 
-//        //ok
-//        @FormUrlEncoded
-//        @POST("addTokenFirebase")
-//        suspend fun sendFCMToken(
-//            @Header("Token") sessionToken: String,
-//            @Field("mobile") mobile: String,
-//            @Field("app_id") appId: String,
-//            @Field("token") token: String
-//        ): FCMResponse
+//
+//        @POST("checkForceUpdate")
+//        suspend fun forceUpdate(
+//            @Header("Accept") accept: String
+//        ): ResponseForceUpdate
+//
+        @FormUrlEncoded
+        @POST("login")
+        suspend fun login(
+            @Field("username") userName:String,
+            @Field("password") password:String
+        ): com.example.global.modules.app.model.Login
 
-        @POST("checkForceUpdate")
-        suspend fun forceUpdate(
-            @Header("Accept") accept: String
-        ): ResponseForceUpdate
 
+        @FormUrlEncoded
+        @POST("getDetail")
+        suspend fun getDetailFromScanner(
+            @Field("user_id") userId:String
+        ): DetailScanner
+
+
+        @POST("addProduct1")
+        suspend fun getProduct1(
+        ): AddProduct1
     }
 
     interface Login {

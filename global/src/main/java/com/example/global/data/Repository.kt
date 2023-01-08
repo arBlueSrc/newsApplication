@@ -1,5 +1,8 @@
 package com.example.global.data
 
+import com.example.global.modules.app.model.AddProduct1
+import com.example.global.modules.app.model.DetailScanner
+import com.example.global.modules.app.model.Login
 import com.example.global.modules.app.model.forceupdate.ResponseForceUpdate
 import com.example.global.modules.category.model.allCats.ResponseCategory
 import com.example.global.modules.category.model.catPosts.ResponseCatPosts
@@ -26,143 +29,156 @@ interface Repository {
 
     interface App {
 
-        suspend fun forceUpdate(
-        ): Resource<ResponseForceUpdate>
+//        suspend fun forceUpdate(
+//        ): Resource<ResponseForceUpdate>
+//
+        suspend fun login(
+            userName:String,
+            password:String
+        ):Resource<Login>
 
+
+        suspend fun detailScanner(
+            userId:String
+        ):Resource<DetailScanner>
+
+
+        suspend fun getProduct1(
+        ):Resource<AddProduct1>
     }
-
-    interface Login {
-        suspend fun sendNumber(
-            mobile: String
-        ): Resource<LoginNumber>
-
-        suspend fun sendOtp(
-            mobile: String,
-            otp: String,
-            idenCode: String
-        ): Resource<LoginOtp>
-
-        suspend fun checkIdenCode(
-            mobile: String,
-            idenCode: String
-        ): Resource<IdentifyCode>
-    }
-
-    interface Home {
-        suspend fun fakeHome(
-        ): Resource<ResponseBigMain>
-
-        suspend fun getSearchedPost(
-            text: String
-        ): Resource<ResponseSearchedPosts>
-    }
-
-    interface Messages {
-        suspend fun getChatRooms(
-        ): Resource<ResponseChatRooms>
-
-        suspend fun getChatMessages(
-            page: Int,
-            perPageNumber: Int,
-            chatId: Int
-        ): Resource<ResponseChatMessage>
-
-        suspend fun getSupportMessages(
-            mobile: String
-        ): Resource<ResponseSupportMsg>
-
-        suspend fun sendSupportMessage(
-            mobile: String,
-            text: String,
-            content: MultipartBody.Part,
-        ): Resource<ResponseSendMsg>
-    }
-
-    interface Category {
-        suspend fun getCategories(
-            minAge: Int?,
-            maxAge: Int?,
-            gender: String?
-        ): Resource<ResponseCategory>
-
-        suspend fun getCategoryPosts(
-            categoryId: Int,
-            minAge: Int?,
-            maxAge: Int?,
-            gender: Int?,
-            subCategory: String?
-        ): Resource<ResponseCatPosts>
-
-        suspend fun getSinglePost(
-            mobile: String,
-            postId: Int
-        ): Resource<ResponsePost>
-
-        suspend fun getSingleIdea(
-            ideaId: Int
-        ): Resource<ResponseSingleIdea>
-
-        suspend fun likePost(
-            mobile: String,
-            dislike: Int,
-            postId: Int
-        ): Resource<ResponseLike>
-
-        suspend fun participationData(
-            mobile: String,
-            postId: String,
-            type: String,
-            title: String,
-            text: String,
-        ): Resource<ResponseParticipation>
-
-        suspend fun sendFileImage(
-            attachments: MultipartBody.Part,
-            ideaId: RequestBody
-        ): Resource<ResponseSendFile>
-    }
-
-
-    interface MySalehin {
-
-        suspend fun getProfileData2(
-            mobile: String
-        ): Resource<ProfileUser>
-
-        suspend fun updateImageProfile(
-            image: MultipartBody.Part,
-            mobile: RequestBody
-        ): Resource<UpdateImageProfile>
-
-
-        suspend fun postDataProfile(
-            mobile: String,
-            name: String,
-            nationalCode: String,
-            birthday: String,
-            gender: String,
-            provinceId: String,
-            cityId: String,
-            neighbourhoodId: String,
-            mosque: String
-        ): Resource<EditProfile>
-    }
-
-    interface Setting {
-        suspend fun getProfileData(
-            mobile: String
-        ): Resource<ProfileUser>
-
-
-        suspend fun getOtherLinks(
-        ): Resource<OtherLink>
-
-        suspend fun sendTicket(
-            mobile: String,
-            message: String
-        ): Resource<SendTicket>
-
-    }
+//
+////    interface Login {
+////        suspend fun sendNumber(
+////            mobile: String
+////        ): Resource<LoginNumber>
+////
+////        suspend fun sendOtp(
+////            mobile: String,
+////            otp: String,
+////            idenCode: String
+////        ): Resource<LoginOtp>
+////
+////        suspend fun checkIdenCode(
+////            mobile: String,
+////            idenCode: String
+////        ): Resource<IdentifyCode>
+////    }
+//
+//    interface Home {
+//        suspend fun fakeHome(
+//        ): Resource<ResponseBigMain>
+//
+//        suspend fun getSearchedPost(
+//            text: String
+//        ): Resource<ResponseSearchedPosts>
+//    }
+//
+//    interface Messages {
+//        suspend fun getChatRooms(
+//        ): Resource<ResponseChatRooms>
+//
+//        suspend fun getChatMessages(
+//            page: Int,
+//            perPageNumber: Int,
+//            chatId: Int
+//        ): Resource<ResponseChatMessage>
+//
+//        suspend fun getSupportMessages(
+//            mobile: String
+//        ): Resource<ResponseSupportMsg>
+//
+//        suspend fun sendSupportMessage(
+//            mobile: String,
+//            text: String,
+//            content: MultipartBody.Part,
+//        ): Resource<ResponseSendMsg>
+//    }
+//
+//    interface Category {
+//        suspend fun getCategories(
+//            minAge: Int?,
+//            maxAge: Int?,
+//            gender: String?
+//        ): Resource<ResponseCategory>
+//
+//        suspend fun getCategoryPosts(
+//            categoryId: Int,
+//            minAge: Int?,
+//            maxAge: Int?,
+//            gender: Int?,
+//            subCategory: String?
+//        ): Resource<ResponseCatPosts>
+//
+//        suspend fun getSinglePost(
+//            mobile: String,
+//            postId: Int
+//        ): Resource<ResponsePost>
+//
+//        suspend fun getSingleIdea(
+//            ideaId: Int
+//        ): Resource<ResponseSingleIdea>
+//
+//        suspend fun likePost(
+//            mobile: String,
+//            dislike: Int,
+//            postId: Int
+//        ): Resource<ResponseLike>
+//
+//        suspend fun participationData(
+//            mobile: String,
+//            postId: String,
+//            type: String,
+//            title: String,
+//            text: String,
+//        ): Resource<ResponseParticipation>
+//
+//        suspend fun sendFileImage(
+//            attachments: MultipartBody.Part,
+//            ideaId: RequestBody
+//        ): Resource<ResponseSendFile>
+//    }
+//
+//
+//    interface MySalehin {
+//
+//        suspend fun getProfileData2(
+//            mobile: String
+//        ): Resource<ProfileUser>
+//
+//        suspend fun updateImageProfile(
+//            image: MultipartBody.Part,
+//            mobile: RequestBody
+//        ): Resource<UpdateImageProfile>
+//
+//
+//        suspend fun postDataProfile(
+//            mobile: String,
+//            name: String,
+//            nationalCode: String,
+//            birthday: String,
+//            gender: String,
+//            provinceId: String,
+//            cityId: String,
+//            neighbourhoodId: String,
+//            mosque: String
+//        ): Resource<EditProfile>
+//    }
+//
+//    interface Setting {
+//        suspend fun getProfileData(
+//            mobile: String
+//        ): Resource<ProfileUser>
+//
+//
+//        suspend fun getOtherLinks(
+//        ): Resource<OtherLink>
+//
+//        suspend fun sendTicket(
+//            mobile: String,
+//            message: String
+//        ): Resource<SendTicket>
+//
+//    }
 
 
 }

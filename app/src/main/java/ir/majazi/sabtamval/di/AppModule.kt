@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import ir.majazi.sabtamval.data.AppRepository
 import javax.inject.Singleton
 
 @InstallIn(ViewModelComponent::class)
@@ -17,4 +18,9 @@ class AppModule {
 //        settingRepository: SettingRepository
 //    ): Repository.Setting = settingRepository
 
+    @Singleton
+    @Provides
+    fun provideAppRepository(
+        appRepository: AppRepository
+    ): Repository.App = appRepository
 }
