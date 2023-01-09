@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.global.utils.extensions.toast
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import ir.majazi.sabtamval.R
@@ -33,6 +34,8 @@ class AddSpecificationsFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
+        val args = AddSpecificationsFragmentArgs.fromBundle(requireArguments())
+        context?.toast(args.goodId)
 
 
         binding.fabAddSpecifications.setOnClickListener {

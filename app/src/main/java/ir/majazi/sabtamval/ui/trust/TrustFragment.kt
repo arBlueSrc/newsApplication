@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentTrustBinding
 import ir.majazi.sabtamval.ui.adapter.AdapterTrust
-import ir.majazi.sabtamval.util.dropDownAdapter
 
 @AndroidEntryPoint
 class TrustFragment : Fragment() {
@@ -50,8 +49,8 @@ class TrustFragment : Fragment() {
         binding.rvTrust.adapter = adapter
 
 
-        val arrayTrust =
-            arrayOf("علیرضا مدنی", "علی فاضلی", "وحید دانشمند", "آرش میرزایی", "علی حاضری")
-            dropDownAdapter(requireContext(),arrayTrust,binding.autoCompleteTrust)
+//        val arrayTrust =
+//            arrayOf("علیرضا مدنی", "علی فاضلی", "وحید دانشمند", "آرش میرزایی", "علی حاضری")
+//            dropDownAdapter(requireContext(),arrayTrust,binding.autoCompleteTrust)
     }
 }

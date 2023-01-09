@@ -44,6 +44,7 @@
         <action
             android:id="@+id/action_addSpecificationsFragment_to_confirmInformationFragment"
             app:destination="@id/confirmInformationFragment" />
+        <argument android:name="good_id" />
     </fragment>
     <fragment
         android:id="@+id/confirmInformationFragment"
