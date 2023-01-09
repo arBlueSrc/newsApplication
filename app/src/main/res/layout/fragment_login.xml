@@ -41,7 +41,6 @@
                 app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
                 app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView2"
                 android:layout_width="0dp"
