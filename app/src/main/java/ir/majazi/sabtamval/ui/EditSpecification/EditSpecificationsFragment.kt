@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.global.network.resource.Resource
+import com.example.global.utils.extensions.dialog
 import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
 import com.example.global.utils.extensions.toast
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import ir.majazi.sabtamval.R
@@ -66,7 +68,9 @@ class EditSpecificationsFragment : Fragment() {
    private fun editProduct(){
 
         val gson= Gson()
-        val json = gson.toJson(Test.array)
+        val json = gson.toJson(Test.array2)
+
+       Log.i("TAG", "editProduct: "+Test.array2[0].id)
 
         viewModel.editProduct(args.productId.toString(),args.goodProperty.toString(),json)
         launchAndRepeatWithViewLifecycle {
@@ -86,7 +90,11 @@ class EditSpecificationsFragment : Fragment() {
 
                     }
                     is Resource.Success -> {
-                        context?.toast("ok")
+                       val dialog = context?.dialog(R.layout.dialog_edited,binding.root,false)
+                        dialog?.findViewById<MaterialTextView>(R.id.back_dialog_edited)?.setOnClickListener {
+                            dialog.dismiss()
+                            Navigation.findNavController(binding.root).navigate(R.id.scannerFragment)
+                        }
 //                            binding.progressBar.visibility = View.VISIBLE
 //                            showBottomSheetGoods(it.data?.result?.goods)
 //                            showBottomSheetStores(it.data?.result?.stores)

@@ -66,6 +66,7 @@ interface ApiService {
             @Field("store_id") storeId:String,
             @Field("part_id") partId:String,
             @Field("employee_id") employeeId:String,
+            @Field("property_number") propertyNumber:String,
             @Field("good_property") goodProperty:String
         ): AddProductResult
 

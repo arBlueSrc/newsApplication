@@ -53,6 +53,7 @@ interface Repository {
             storeId:String,
             partId:String,
             employeeId:String,
+            propertyNumber: String,
             goodProperty:String
         ):Resource<AddProductResult>
 
@@ -61,7 +62,7 @@ interface Repository {
             productId:String,
             propertyNumber:String,
             goodProperty:String
-        ):Resource<AddProductResult>
+        ):Resource<EditProudect>
     }
 //
 ////    interface Login {
