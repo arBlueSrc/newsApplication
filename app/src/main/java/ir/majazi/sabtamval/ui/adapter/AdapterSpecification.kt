@@ -24,12 +24,10 @@ class AdapterSpecification(
             binding.mtvTypeGood.text = detailScanner.good?.name
             binding.mtvPropertyNumber.text = detailScanner.propertyNumber
             binding.btnLend.setOnClickListener {
-                clickListener(detailScanner)
-
+               // clickListener(detailScanner)
             }
             binding.btnEdit.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_specificationsFragment_to_editSpecificationsFragment)
+                clickListener(detailScanner)
             }
 
             binding.btnTakeBack.setOnClickListener {
