@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.global.network.resource.Resource
 import com.example.global.utils.Save
+import com.example.global.utils.extensions.disableButton
 import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
 import com.example.global.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,6 +36,13 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogin.setOnClickListener {
             checkLogin()
+            binding.btnLogin.apply {
+                text = "در حال بررسی ..."
+                disableButton(
+                    backgroundColor = com.example.global.R.color.custom_gray5,
+                    textColor = ir.majazi.sabtamval.R.color.black
+                )
+            }
         }
 
     }
