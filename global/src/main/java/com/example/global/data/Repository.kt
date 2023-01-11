@@ -55,6 +55,13 @@ interface Repository {
             employeeId:String,
             goodProperty:String
         ):Resource<AddProductResult>
+
+
+        suspend fun editProduct(
+            productId:String,
+            propertyNumber:String,
+            goodProperty:String
+        ):Resource<AddProductResult>
     }
 //
 ////    interface Login {

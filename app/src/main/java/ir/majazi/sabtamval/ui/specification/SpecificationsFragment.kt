@@ -75,7 +75,7 @@ class SpecificationsFragment : Fragment() {
 
     private fun listItemClicked(product: Product){
         val directions = SpecificationsFragmentDirections
-            .actionSpecificationsFragmentToEditSpecificationsFragment(product)
+            .actionSpecificationsFragmentToEditSpecificationsFragment(product,product.id.toString(),product.propertyNumber)
         findNavController().navigate(directions)
     }
 }
