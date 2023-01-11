@@ -78,13 +78,7 @@ class AppRepository @Inject constructor(
         }
     }
 
-    override suspend fun editProduct(
-        productId: String,
-        propertyNumber: String,
-        goodProperty: String
-    ): Resource<AddProductResult> {
-        TODO("Not yet implemented")
-    }
+
 
     override suspend fun takeBack(productId: String, description: String): Resource<EditProudect> {
         return try {

@@ -53,6 +53,7 @@ interface Repository {
             storeId:String,
             partId:String,
             employeeId:String,
+            propertyNumber: String,
             goodProperty:String
         ):Resource<AddProductResult>
 
