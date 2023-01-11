@@ -12,10 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.global.network.resource.Resource
+import com.example.global.utils.extensions.dialog
 import com.example.global.utils.extensions.disableButton
 import com.example.global.utils.extensions.toast
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textview.MaterialTextView
 import dagger.hilt.android.AndroidEntryPoint
+import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentTakeBackBinding
 import kotlinx.coroutines.launch
 
@@ -91,18 +94,11 @@ class TakeBackFragment : Fragment() {
     }
 
     private fun showDialog() {
-        val dialog = Dialog(requireActivity())
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(ir.majazi.sabtamval.R.layout.dialog_tale_back)
-
-        val dialogButton: Button =
-            dialog.findViewById(ir.majazi.sabtamval.R.id.btn_back_take_back) as Button
-        dialogButton.setOnClickListener(View.OnClickListener {
+        val dialog = context?.dialog(R.layout.dialog_tale_back,binding.root,false)
+            dialog?.findViewById<MaterialTextView>(R.id.btn_back_take_back)?.setOnClickListener{
             dialog.dismiss()
             findNavController().navigateUp()
-        })
+        }
 
-        dialog.show()
     }
 }

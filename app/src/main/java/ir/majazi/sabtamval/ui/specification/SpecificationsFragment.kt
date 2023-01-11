@@ -70,7 +70,20 @@ class SpecificationsFragment : Fragment() {
                                 it.data?.products,
                                 { selectedItem: Product ->
                                     findNavController().navigate(SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(selectedItem.id ?: 0))
-                                }
+                                },
+                                {
+                                    val directions = SpecificationsFragmentDirections
+                                        .actionSpecificationsFragmentToTrustFragment(it,
+                                            binding.personSpecifications.text.toString(),
+                                            binding.storeSpecification.text.toString(),
+                                            binding.partSpecification.text.toString(),
+                                            it.good?.name.toString(),
+                                            it.propertyNumber.toString()
+                                        )
+                                    findNavController().navigate(directions)
+
+
+                        }
                             )
                             binding.rvSpecification.adapter = adapter
                         }

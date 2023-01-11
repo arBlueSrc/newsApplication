@@ -190,6 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_8sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -222,11 +223,24 @@
                 android:id="@+id/auto_complete_trust"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:dropDownHeight="@dimen/_150sdp"
                 android:fontFamily="@font/shabnam"
                 android:hint="@string/chose_person"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_lend"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:backgroundTint="@color/custom_green2"
+            android:fontFamily="@font/shabnam_bold"
+            android:text="ذخیره"
+            app:cornerRadius="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

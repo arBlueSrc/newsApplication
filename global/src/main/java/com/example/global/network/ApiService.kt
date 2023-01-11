@@ -86,6 +86,18 @@ interface ApiService {
             @Field("description") description:String
         ): EditProudect
 
+
+        @POST("staff")
+        suspend fun getPerson(
+        ): Person
+
+
+        @FormUrlEncoded
+        @POST("lend")
+        suspend fun lend(
+            @Field("product_id") productId:String,
+            @Field("borrower_id") borrowerId:String
+        ): Lend
     }
 
     interface Login {

@@ -88,4 +88,22 @@ class AppRepository @Inject constructor(
             handleException(e)
         }
     }
+
+    override suspend fun getPerson(): Resource<Person> {
+        return try {
+            val response = apiService.getPerson()
+            Resource.Success(data = response)
+        } catch (e: java.lang.Exception) {
+            handleException(e)
+        }
+    }
+
+    override suspend fun lend(productId: String, borrowerId: String): Resource<Lend> {
+        return try {
+            val response = apiService.lend(productId, borrowerId)
+            Resource.Success(data = response)
+        } catch (e: java.lang.Exception) {
+            handleException(e)
+        }
+    }
 }

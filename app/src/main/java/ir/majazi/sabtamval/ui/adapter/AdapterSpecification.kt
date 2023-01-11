@@ -13,7 +13,8 @@ import ir.majazi.sabtamval.databinding.ItemSpecificationsBinding
 class AdapterSpecification(
     private val clickListener: (Product) -> Unit,
     private val list: List<Product>?,
-    private val takeBackClickListener: (Product) -> Unit
+    private val takeBackClickListener: (Product) -> Unit,
+    private val lendClickListener: (Product) -> Unit,
 ) :
     RecyclerView.Adapter<AdapterSpecification.MyViewHolder>() {
 
@@ -24,7 +25,7 @@ class AdapterSpecification(
             binding.mtvTypeGood.text = detailScanner.good?.name
             binding.mtvPropertyNumber.text = detailScanner.propertyNumber
             binding.btnLend.setOnClickListener {
-               // clickListener(detailScanner)
+               lendClickListener(detailScanner)
             }
             binding.btnEdit.setOnClickListener {
                 clickListener(detailScanner)
