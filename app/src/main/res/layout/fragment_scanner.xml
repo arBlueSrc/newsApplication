@@ -34,6 +34,7 @@
             android:backgroundTint="@color/custom_green2"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_baseline_add_24"
+            app:tint="@color/white"
             app:fabCustomSize="@dimen/_65sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
