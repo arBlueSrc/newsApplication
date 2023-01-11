@@ -39,7 +39,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextView6"
+                android:id="@+id/tv_good_type_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_4sdp"
@@ -63,6 +63,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_part_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_4sdp"
@@ -86,6 +87,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_person_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_4sdp"
@@ -109,6 +111,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_property_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_4sdp"
@@ -133,10 +136,14 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy_confirm_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_16sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_good_property"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="@dimen/_16sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView9" />
 

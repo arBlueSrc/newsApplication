@@ -1,8 +1,6 @@
 package com.example.global.data
 
-import com.example.global.modules.app.model.AddProduct1
-import com.example.global.modules.app.model.DetailScanner
-import com.example.global.modules.app.model.Login
+import com.example.global.modules.app.model.*
 import com.example.global.modules.app.model.forceupdate.ResponseForceUpdate
 import com.example.global.modules.category.model.allCats.ResponseCategory
 import com.example.global.modules.category.model.catPosts.ResponseCatPosts
@@ -45,6 +43,25 @@ interface Repository {
 
         suspend fun getProduct1(
         ):Resource<AddProduct1>
+
+        suspend fun addProduct2(
+            goodId:String
+        ):Resource<AddProduct2>
+
+        suspend fun addProductResult(
+            goodId:String,
+            storeId:String,
+            partId:String,
+            employeeId:String,
+            goodProperty:String
+        ):Resource<AddProductResult>
+
+
+        suspend fun editProduct(
+            productId:String,
+            propertyNumber:String,
+            goodProperty:String
+        ):Resource<AddProductResult>
     }
 //
 ////    interface Login {

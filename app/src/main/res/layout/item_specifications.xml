@@ -128,6 +128,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/shabnam_bold"
             android:text="پس گرفتن"
+            android:visibility="gone"
             android:layout_marginEnd="@dimen/_4sdp"
             android:backgroundTint="#BA1A1A"
             app:icon="@drawable/ic_take_back"

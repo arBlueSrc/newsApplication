@@ -16,7 +16,7 @@ class AdapterTrust(private val list: List<ProductX>?) : RecyclerView.Adapter<Ada
     class MyViewHolder(private val binding: ItemGoodPropertyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(detailScanner: ProductX) {
             binding.mtvNameGoodPeroperty.text = detailScanner.goodProperty?.name
-            binding.mtvValueGoodProperty.text = detailScanner.value
+            binding.mtvValueGoodProperty.text = detailScanner.value.toString()
         }
     }
 

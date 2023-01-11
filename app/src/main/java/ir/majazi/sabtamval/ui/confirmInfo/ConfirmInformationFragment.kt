@@ -1,23 +1,31 @@
 package ir.majazi.sabtamval.ui.confirmInfo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import com.example.global.network.resource.Resource
+import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
+import com.example.global.utils.extensions.toast
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentConfirmInformationBinding
+import ir.majazi.sabtamval.ui.adapter.AdapterConfirmInfo
+import ir.majazi.sabtamval.util.Test
 
 @AndroidEntryPoint
 class ConfirmInformationFragment : Fragment() {
 
 
     private lateinit var binding: FragmentConfirmInformationBinding
-    private lateinit var viewModel: ConfirmInformationViewModel
-
+    private val viewModel: ConfirmInformationViewModel by viewModels()
+    private lateinit var args: ConfirmInformationFragmentArgs
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,5 +49,65 @@ class ConfirmInformationFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
+
+        args =ConfirmInformationFragmentArgs.fromBundle(requireArguments())
+
+        binding.tvGoodTypeInfo.text = args.goodType
+        binding.tvPartInfo.text = args.part
+        binding.tvPersonInfo.text = args.person
+        binding.txtPropertyNumber.text= args.propertyNumber
+
+
+        Log.i("TAG", "onViewCreated: ${Test.array[0].name} ")
+
+        val adapter=AdapterConfirmInfo(Test.array)
+        binding.recyConfirmInfo.adapter = adapter
+
+        binding.fabConfirmInfo.setOnClickListener {
+            sendInfo()
+        }
+
     }
+
+    fun sendInfo(){
+
+        val gson=Gson()
+        val json = gson.toJson(Test.array)
+        Log.i("TAG", "sendInfo: "+json.toString())
+
+        viewModel.addProduct(args.goodId.toString(),args.storeId.toString(),args.partId.toString(), args.employeeId.toString(),json)
+        launchAndRepeatWithViewLifecycle {
+            viewModel.responseLogin.collect {
+                when (it) {
+                    is Resource.Loading -> {
+////                            binding.progressBar.visibility=View.VISIBLE
+//                            binding.progressBar2.visibility = View.VISIBLE
+//                            requireActivity().window.setFlags(
+//                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//                                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
+
+                    }
+                    is Resource.Error -> {
+                        context?.toast(" مشکل در دریافت اطلاعات"+it.message.toString())
+
+                    }
+                    is Resource.Success -> {
+                        context?.toast("ok")
+//                            binding.progressBar.visibility = View.VISIBLE
+//                            showBottomSheetGoods(it.data?.result?.goods)
+//                            showBottomSheetStores(it.data?.result?.stores)
+//                            showBottomSheetParts(it.data?.result?.parts)
+
+                    }
+                    else -> {}
+                }
+
+            }
+        }
+    }
+
+
+
+
 }

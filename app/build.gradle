@@ -131,6 +131,8 @@ dependencies {
 
     // Add this line
 
+    implementation 'com.google.code.gson:gson:2.10.1'
+
 
     //scanner
     implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'

@@ -25,6 +25,7 @@ class AddGoodViewModel @Inject constructor(
         viewModelScope.launch {
             _responseAddProduct.update {
                 addProductRepository.getProduct1()
+
             }
         }
     }
