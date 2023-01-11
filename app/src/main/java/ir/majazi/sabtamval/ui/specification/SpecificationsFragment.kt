@@ -57,12 +57,21 @@ class SpecificationsFragment : Fragment() {
                             context?.toast("مشکل در دریافت اطلاعات")
                         }
                         is Resource.Success -> {
-                            binding.personSpecifications.text = "${it.data?.user?.name} ${it.data?.user?.lastName}"
+                            binding.personSpecifications.text =
+                                "${it.data?.user?.name} ${it.data?.user?.lastName}"
                             binding.storeSpecification.text = it.data?.user?.store
                             binding.partSpecification.text = it.data?.user?.part
 //                                context?.toast("ok")
 
-                            val adapter =AdapterSpecification({selectedItem:Product->listItemClicked(selectedItem)},it.data?.products)
+                            val adapter = AdapterSpecification(
+                                { selectedItem: Product ->
+                                    listItemClicked(selectedItem)
+                                },
+                                it.data?.products,
+                                { selectedItem: Product ->
+                                    findNavController().navigate(SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(selectedItem.id ?: 0))
+                                }
+                            )
                             binding.rvSpecification.adapter = adapter
                         }
                         else -> {}
@@ -70,12 +79,16 @@ class SpecificationsFragment : Fragment() {
                 }
             }
 
-        }else context?.toast("خطا در خواندن بارکد")
+        } else context?.toast("خطا در خواندن بارکد")
     }
 
-    private fun listItemClicked(product: Product){
+    private fun listItemClicked(product: Product) {
         val directions = SpecificationsFragmentDirections
-            .actionSpecificationsFragmentToEditSpecificationsFragment(product,product.id.toString(),product.propertyNumber)
+            .actionSpecificationsFragmentToEditSpecificationsFragment(
+                product,
+                product.id.toString(),
+                product.propertyNumber
+            )
         findNavController().navigate(directions)
     }
 }

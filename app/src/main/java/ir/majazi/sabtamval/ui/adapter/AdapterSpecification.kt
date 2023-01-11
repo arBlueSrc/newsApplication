@@ -1,6 +1,7 @@
 package ir.majazi.sabtamval.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -9,12 +10,16 @@ import com.example.global.modules.app.model.Product
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.ItemSpecificationsBinding
 
-class AdapterSpecification(private val clickListener:(Product)->Unit,private val list: List<Product>?) :
+class AdapterSpecification(
+    private val clickListener: (Product) -> Unit,
+    private val list: List<Product>?,
+    private val takeBackClickListener: (Product) -> Unit
+) :
     RecyclerView.Adapter<AdapterSpecification.MyViewHolder>() {
 
-    class MyViewHolder(private val binding: ItemSpecificationsBinding) :
+    inner class MyViewHolder(private val binding: ItemSpecificationsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(detailScanner: Product , clickListener: (Product) -> Unit) {
+        fun bind(detailScanner: Product, clickListener: (Product) -> Unit) {
 
             binding.mtvTypeGood.text = detailScanner.good?.name
             binding.mtvPropertyNumber.text = detailScanner.propertyNumber
@@ -27,13 +32,17 @@ class AdapterSpecification(private val clickListener:(Product)->Unit,private val
                     .navigate(R.id.action_specificationsFragment_to_editSpecificationsFragment)
             }
 
+            binding.btnTakeBack.setOnClickListener {
+                takeBackClickListener(detailScanner)
+            }
+
             //set buttons view
-            if (detailScanner.is_loaned == 1){
+            if (detailScanner.is_loaned == 1) {
                 binding.apply {
                     btnTakeBack.visibility = View.VISIBLE
                     btnLend.visibility = View.GONE
                 }
-            }else{
+            } else {
                 binding.apply {
                     btnTakeBack.visibility = View.GONE
                     btnLend.visibility = View.VISIBLE
@@ -58,7 +67,7 @@ class AdapterSpecification(private val clickListener:(Product)->Unit,private val
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(list!![position],clickListener)
+        holder.bind(list!![position], clickListener)
 
     }
 

@@ -161,6 +161,9 @@
         <action
             android:id="@+id/action_specificationsFragment_to_trustFragment"
             app:destination="@id/trustFragment" />
+        <action
+            android:id="@+id/action_specificationsFragment_to_takeBackFragment"
+            app:destination="@id/takeBackFragment" />
     </fragment>
     <fragment
         android:id="@+id/trustFragment"
@@ -194,5 +197,13 @@
         <argument
             android:name="product"
             app:argType="com.example.global.modules.app.model.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeBackFragment"
+        android:name="ir.majazi.sabtamval.ui.takeBack.TakeBackFragment"
+        android:label="takeBackFragment" >
+        <argument
+            android:name="product_id"
+            app:argType="integer" />
     </fragment>
 </navigation>

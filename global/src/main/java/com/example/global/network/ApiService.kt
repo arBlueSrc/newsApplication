@@ -78,6 +78,13 @@ interface ApiService {
             @Field("good_property") goodProperty:String
             ): EditProudect
 
+        @FormUrlEncoded
+        @POST("takeBack")
+        suspend fun takeBack(
+            @Field("product_id") productId:String,
+            @Field("description") description:String
+        ): EditProudect
+
     }
 
     interface Login {

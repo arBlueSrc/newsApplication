@@ -62,4 +62,21 @@ class AppRepository @Inject constructor(
             handleException(e)
         }
     }
+
+    override suspend fun editProduct(
+        productId: String,
+        propertyNumber: String,
+        goodProperty: String
+    ): Resource<AddProductResult> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun takeBack(productId: String, description: String): Resource<EditProudect> {
+        return try {
+            val response = apiService.takeBack(productId,description)
+            Resource.Success(data = response)
+        } catch (e: java.lang.Exception) {
+            handleException(e)
+        }
+    }
 }

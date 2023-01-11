@@ -62,6 +62,12 @@ interface Repository {
             propertyNumber:String,
             goodProperty:String
         ):Resource<AddProductResult>
+
+        suspend fun takeBack(
+            productId:String,
+            description:String
+        ):Resource<EditProudect>
+
     }
 //
 ////    interface Login {
