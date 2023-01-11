@@ -15,8 +15,10 @@ data class Product(
     var goodId: Int?,
     @Json(name = "id")
     var id: Int?,
+    @Json(name = "is_loaned")
+    var is_loaned: Int?,
     @Json(name = "products")
     var products: List<ProductX>?,
     @Json(name = "property_number")
     var propertyNumber: String?
-):Parcelable
+) : Parcelable

@@ -1,6 +1,7 @@
 package ir.majazi.sabtamval.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
@@ -15,17 +16,30 @@ class AdapterSpecification(private val clickListener:(Product)->Unit,private val
     class MyViewHolder(private val binding: ItemSpecificationsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(detailScanner: Product , clickListener: (Product) -> Unit) {
+
             binding.mtvTypeGood.text = detailScanner.good?.name
             binding.mtvPropertyNumber.text = detailScanner.propertyNumber
-            binding.imvTrust.setOnClickListener {
+            binding.btnLend.setOnClickListener {
                 clickListener(detailScanner)
 
             }
-            binding.imvEditInformation.setOnClickListener {
+            binding.btnEdit.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_specificationsFragment_to_editSpecificationsFragment)
             }
 
+            //set buttons view
+            if (detailScanner.is_loaned == 1){
+                binding.apply {
+                    btnTakeBack.visibility = View.VISIBLE
+                    btnLend.visibility = View.GONE
+                }
+            }else{
+                binding.apply {
+                    btnTakeBack.visibility = View.GONE
+                    btnLend.visibility = View.VISIBLE
+                }
+            }
 
             val adapterGoodProperty = AdapterGoodProperty(detailScanner.products)
             binding.rvGoodProperty.adapter = adapterGoodProperty
