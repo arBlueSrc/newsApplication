@@ -34,6 +34,7 @@ class SpecificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSpecificationsBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -55,13 +56,19 @@ class SpecificationsFragment : Fragment() {
                         is Resource.Loading -> {}
                         is Resource.Error -> {
                             context?.toast("مشکل در دریافت اطلاعات")
+                            findNavController().navigateUp()
                         }
                         is Resource.Success -> {
-                            binding.personSpecifications.text =
-                                "${it.data?.user?.name} ${it.data?.user?.lastName}"
-                            binding.storeSpecification.text = it.data?.user?.store
-                            binding.partSpecification.text = it.data?.user?.part
-//                                context?.toast("ok")
+
+
+                            binding.apply {
+                                personSpecifications.text = "${it.data?.user?.name} ${it.data?.user?.lastName}"
+                                storeSpecification.text = it.data?.user?.store
+                                partSpecification.text = it.data?.user?.part
+                                loadingBg.visibility = View.GONE
+                                loadingAnim.visibility = View.GONE
+                            }
+
 
                             val adapter = AdapterSpecification(
                                 { selectedItem: Product ->
@@ -69,7 +76,11 @@ class SpecificationsFragment : Fragment() {
                                 },
                                 it.data?.products,
                                 { selectedItem: Product ->
-                                    findNavController().navigate(SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(selectedItem.id ?: 0))
+                                    findNavController().navigate(
+                                        SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(
+                                            selectedItem.id ?: 0
+                                        )
+                                    )
                                 }
                             )
                             binding.rvSpecification.adapter = adapter

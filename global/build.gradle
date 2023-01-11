@@ -105,6 +105,8 @@ dependencies {
 
     //slider
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
+    implementation 'com.airbnb.android:lottie:5.0.3'
 }
 
 repositories {
