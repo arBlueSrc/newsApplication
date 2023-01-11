@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
                         is Resource.Error -> {
                             context?.toast("مشکل در دریافت اطلاعات")
                             binding.btnLogin.apply {
-                                text = "در حال بررسی ..."
+                                text = "ورود"
                                 enableButton(
                                     backgroundColor = com.example.global.R.color.custom_green2,
                                     textColor = ir.majazi.sabtamval.R.color.white
