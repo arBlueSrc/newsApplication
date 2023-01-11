@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.FragmentEditSpecificationsBinding
+import ir.majazi.sabtamval.ui.adapter.AdapterEditGood
 
 
 @AndroidEntryPoint
@@ -35,6 +35,17 @@ class EditSpecificationsFragment : Fragment() {
         toolbar.setNavigationOnClickListener {
             Navigation.findNavController(view).popBackStack()
         }
+
+        val args = EditSpecificationsFragmentArgs.fromBundle(requireArguments())
+
+        val adapter=AdapterEditGood(args.product){
+
+        }
+        binding.recyEditGood.adapter =adapter
     }
+
+
+
+
 
 }

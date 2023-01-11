@@ -32,6 +32,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/shabnam"
@@ -41,14 +42,36 @@
             app:layout_constraintTop_toTopOf="@+id/materialTextView3" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_property_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:hint="شماره اموال"
+                android:fontFamily="@font/shabnam" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recy_add_good"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6"
             tools:listitem="@layout/item_add_good" />
 
 

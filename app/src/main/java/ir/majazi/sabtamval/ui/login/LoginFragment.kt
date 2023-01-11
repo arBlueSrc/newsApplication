@@ -62,8 +62,7 @@ class LoginFragment : Fragment() {
                                 withContext(Dispatchers.Main){
                                     Save.data(requireContext(),"userName",binding.edtUserName.text.toString())
                                     Save.data(requireContext(),"password",binding.edtPassword.text.toString())
-                                    Navigation.findNavController(binding.root)
-                                        .navigate(R.id.action_loginFragment_to_scannerFragment)
+                                    Navigation.findNavController(binding.root).navigate(R.id.scannerFragment)
                                 }
 
                             }else{

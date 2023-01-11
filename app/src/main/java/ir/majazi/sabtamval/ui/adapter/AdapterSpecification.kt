@@ -17,13 +17,14 @@ class AdapterSpecification(private val clickListener:(Product)->Unit,private val
         fun bind(detailScanner: Product , clickListener: (Product) -> Unit) {
             binding.mtvTypeGood.text = detailScanner.good?.name
             binding.mtvPropertyNumber.text = detailScanner.propertyNumber
-            binding.imvTrust.setOnClickListener {
-                clickListener(detailScanner)
+            binding.btnTakeBack.setOnClickListener {
+
 
             }
-            binding.imvEditInformation.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_specificationsFragment_to_editSpecificationsFragment)
+            binding.btnEdit.setOnClickListener {
+//                Navigation.findNavController(it)
+//                    .navigate(R.id.action_specificationsFragment_to_editSpecificationsFragment)
+                clickListener(detailScanner)
             }
 
 

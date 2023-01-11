@@ -1,8 +1,6 @@
 package com.example.global.network
 
-import com.example.global.modules.app.model.AddProduct1
-import com.example.global.modules.app.model.DetailScanner
-import com.example.global.modules.app.model.Login
+import com.example.global.modules.app.model.*
 import com.example.global.modules.app.model.forceupdate.ResponseForceUpdate
 import com.example.global.modules.category.model.allCats.ResponseCategory
 import com.example.global.modules.category.model.catPosts.ResponseCatPosts
@@ -24,6 +22,7 @@ import com.example.global.modules.shared.ResponseBigMain
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
+import retrofit2.http.Part
 
 interface ApiService {
 
@@ -53,6 +52,24 @@ interface ApiService {
         @POST("addProduct1")
         suspend fun getProduct1(
         ): AddProduct1
+
+        @FormUrlEncoded
+        @POST("addProduct2")
+        suspend fun AddProduct2(
+            @Field("good_id") goodId:String
+        ): AddProduct2
+
+        @FormUrlEncoded
+        @POST("addProduct3")
+        suspend fun addProductResult(
+            @Field("good_id") goodId:String,
+            @Field("store_id") storeId:String,
+            @Field("part_id") partId:String,
+            @Field("employee_id") employeeId:String,
+            @Field("good_property") goodProperty:String,
+
+        ): AddProductResult
+
     }
 
     interface Login {
