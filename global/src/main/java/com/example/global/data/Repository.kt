@@ -69,6 +69,15 @@ interface Repository {
             description:String
         ):Resource<EditProudect>
 
+
+        suspend fun getPerson(
+        ):Resource<Person>
+
+
+        suspend fun lend(
+            productId:String,
+            borrowerId:String
+        ):Resource<Lend>
     }
 //
 ////    interface Login {

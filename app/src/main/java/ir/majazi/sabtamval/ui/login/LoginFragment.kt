@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import com.example.global.network.resource.Resource
 import com.example.global.utils.Save
 import com.example.global.utils.extensions.disableButton
+import com.example.global.utils.extensions.enableButton
 import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
 import com.example.global.utils.extensions.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,6 +63,13 @@ class LoginFragment : Fragment() {
                         is Resource.Loading -> {}
                         is Resource.Error -> {
                             context?.toast("مشکل در دریافت اطلاعات")
+                            binding.btnLogin.apply {
+                                text = "در حال بررسی ..."
+                                enableButton(
+                                    backgroundColor = com.example.global.R.color.custom_green2,
+                                    textColor = ir.majazi.sabtamval.R.color.white
+                                )
+                            }
                         }
                         is Resource.Success -> {
 

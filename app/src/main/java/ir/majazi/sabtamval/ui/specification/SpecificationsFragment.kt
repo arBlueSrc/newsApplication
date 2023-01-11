@@ -76,12 +76,30 @@ class SpecificationsFragment : Fragment() {
                                 },
                                 it.data?.products,
                                 { selectedItem: Product ->
+<<<<<<< HEAD
                                     findNavController().navigate(
                                         SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(
                                             selectedItem.id ?: 0
                                         )
                                     )
                                 }
+=======
+                                    findNavController().navigate(SpecificationsFragmentDirections.actionSpecificationsFragmentToTakeBackFragment(selectedItem.id ?: 0))
+                                },
+                                {
+                                    val directions = SpecificationsFragmentDirections
+                                        .actionSpecificationsFragmentToTrustFragment(it,
+                                            binding.personSpecifications.text.toString(),
+                                            binding.storeSpecification.text.toString(),
+                                            binding.partSpecification.text.toString(),
+                                            it.good?.name.toString(),
+                                            it.propertyNumber.toString()
+                                        )
+                                    findNavController().navigate(directions)
+
+
+                        }
+>>>>>>> 473eda59a5185533da1444ad3559c2e4b579b3f4
                             )
                             binding.rvSpecification.adapter = adapter
                         }
