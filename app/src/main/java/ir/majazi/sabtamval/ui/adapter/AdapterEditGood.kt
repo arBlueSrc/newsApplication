@@ -2,6 +2,7 @@ package ir.majazi.sabtamval.ui.adapter
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -12,17 +13,20 @@ import com.example.global.modules.app.model.ResultXX
 import com.google.android.material.textfield.TextInputEditText
 import ir.majazi.sabtamval.R
 import ir.majazi.sabtamval.databinding.ItemAddGoodBinding
+import ir.majazi.sabtamval.util.Test
 
 class AdapterEditGood(private val list: List<ProductX>?, private val clickListener:(TextInputEditText)->Unit) :
     RecyclerView.Adapter<AdapterEditGood.MyViewHolder>() {
-    var array:MutableList<ResultXX> = mutableListOf()
+//    var array:MutableList<ResultXX> = mutableListOf()
 
 
     init {
         list?.forEach {
 
-            array.add(ResultXX(0,"",""))
+            Test.array2.add(ResultXX(0,"",""))
         }
+
+        Log.i("TAG", "sssss: "+Test.array2[0].name+Test.array2[0].value+Test.array2[0].id)
     }
 
     inner class MyViewHolder(private val binding: ItemAddGoodBinding) :
@@ -46,7 +50,7 @@ class AdapterEditGood(private val list: List<ProductX>?, private val clickListen
 
                 override fun afterTextChanged(p0: Editable?) {
                     val resultX= ResultXX(detailScanner.id,detailScanner.value,p0.toString())
-                    array[position] = resultX
+                    Test.array2[position] = resultX
                 }
 
             })

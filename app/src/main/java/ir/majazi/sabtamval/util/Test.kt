@@ -6,4 +6,5 @@ import com.example.global.modules.app.model.ResultXX
 
 object Test {
     var array:MutableList<ResultXX> = mutableListOf()
+    var array2:MutableList<ResultXX> = mutableListOf()
 }

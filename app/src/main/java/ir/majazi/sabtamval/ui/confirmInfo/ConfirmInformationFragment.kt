@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.global.network.resource.Resource
+import com.example.global.utils.extensions.dialog
 import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
 import com.example.global.utils.extensions.toast
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import ir.majazi.sabtamval.R
@@ -50,17 +52,17 @@ class ConfirmInformationFragment : Fragment() {
             Navigation.findNavController(view).popBackStack()
         }
 
-        args =ConfirmInformationFragmentArgs.fromBundle(requireArguments())
+        args = ConfirmInformationFragmentArgs.fromBundle(requireArguments())
 
         binding.tvGoodTypeInfo.text = args.goodType
         binding.tvPartInfo.text = args.part
         binding.tvPersonInfo.text = args.person
-        binding.txtPropertyNumber.text= args.propertyNumber
+        binding.txtPropertyNumber.text = args.propertyNumber
 
 
         Log.i("TAG", "onViewCreated: ${Test.array[0].name} ")
 
-        val adapter=AdapterConfirmInfo(Test.array)
+        val adapter = AdapterConfirmInfo(Test.array)
         binding.recyConfirmInfo.adapter = adapter
 
         binding.fabConfirmInfo.setOnClickListener {
@@ -69,13 +71,21 @@ class ConfirmInformationFragment : Fragment() {
 
     }
 
-    fun sendInfo(){
+   private fun sendInfo() {
 
-        val gson=Gson()
+        val gson = Gson()
         val json = gson.toJson(Test.array)
-        Log.i("TAG", "sendInfo: "+json.toString())
+        Log.i("TAG", "sendInfo: " + Test.array[0].name+Test.array[0].value+Test.array[0].id)
+        Log.i("TAG", "sendInfo: " + Test.array[1].name+Test.array[1].value+Test.array[1].id)
 
-        viewModel.addProduct(args.goodId.toString(),args.storeId.toString(),args.partId.toString(), args.employeeId.toString(),json)
+        viewModel.addProduct(
+            args.goodId.toString(),
+            args.storeId.toString(),
+            args.partId.toString(),
+            args.employeeId.toString(),
+            args.propertyNumber.toString(),
+            json
+        )
         launchAndRepeatWithViewLifecycle {
             viewModel.responseLogin.collect {
                 when (it) {
@@ -89,11 +99,15 @@ class ConfirmInformationFragment : Fragment() {
 
                     }
                     is Resource.Error -> {
-                        context?.toast(" مشکل در دریافت اطلاعات"+it.message.toString())
+                        context?.toast(" مشکل در دریافت اطلاعات" + it.message.toString())
 
                     }
                     is Resource.Success -> {
-                        context?.toast("ok")
+                        val dialog = context?.dialog(R.layout.dialog_registranion,binding.root,false)
+                        dialog?.findViewById<MaterialTextView>(R.id.tv_back_registranion)?.setOnClickListener {
+                            dialog.dismiss()
+                            Navigation.findNavController(binding.root).navigate(R.id.scannerFragment)
+                        }
 //                            binding.progressBar.visibility = View.VISIBLE
 //                            showBottomSheetGoods(it.data?.result?.goods)
 //                            showBottomSheetStores(it.data?.result?.stores)
@@ -106,8 +120,6 @@ class ConfirmInformationFragment : Fragment() {
             }
         }
     }
-
-
 
 
 }

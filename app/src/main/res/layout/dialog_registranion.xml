@@ -53,6 +53,7 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_back_registranion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_16sdp"

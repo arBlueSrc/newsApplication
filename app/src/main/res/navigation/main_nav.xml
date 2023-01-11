@@ -135,7 +135,8 @@
         <argument
             android:name="product"
             app:argType="com.example.global.modules.app.model.Product"
-            app:nullable="true" />
+            app:nullable="true"
+            android:defaultValue="@null" />
         <argument android:name="product_id"
             app:argType="string"
             app:nullable="true"

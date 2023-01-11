@@ -48,15 +48,17 @@ class AppRepository @Inject constructor(
         }
     }
 
+
     override suspend fun addProductResult(
         goodId: String,
         storeId: String,
         partId: String,
         employeeId: String,
+        propertyNumber: String,
         goodProperty: String
     ): Resource<AddProductResult> {
         return try {
-            val response = apiService.addProductResult(goodId,storeId,partId,employeeId, goodProperty)
+            val response = apiService.addProductResult(goodId,storeId,partId,employeeId, propertyNumber,goodProperty)
             Resource.Success(data = response)
         } catch (e: java.lang.Exception) {
             handleException(e)
@@ -67,9 +69,16 @@ class AppRepository @Inject constructor(
         productId: String,
         propertyNumber: String,
         goodProperty: String
-    ): Resource<AddProductResult> {
-        TODO("Not yet implemented")
+    ): Resource<EditProudect> {
+        return try {
+            val response = apiService.editProduct(productId, propertyNumber, goodProperty)
+            Resource.Success(data = response)
+        } catch (e: java.lang.Exception) {
+            handleException(e)
+        }
     }
+
+
 
     override suspend fun takeBack(productId: String, description: String): Resource<EditProudect> {
         return try {

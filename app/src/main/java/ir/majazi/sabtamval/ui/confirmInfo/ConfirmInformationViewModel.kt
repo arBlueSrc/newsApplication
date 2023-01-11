@@ -21,10 +21,10 @@ class ConfirmInformationViewModel @Inject constructor(
     val responseLogin
         get() = _responseAddProduct.asStateFlow()
 
-    fun addProduct(goodId:String,storeId:String,partId:String,employeeId:String,goodProperty:String) {
+    fun addProduct(goodId:String,storeId:String,partId:String,employeeId:String,propertyNumber:String,goodProperty:String) {
         viewModelScope.launch {
             _responseAddProduct.update {
-                addProductRepository.addProductResult(goodId,storeId, partId, employeeId, goodProperty)
+                addProductRepository.addProductResult(goodId,storeId, partId, employeeId, propertyNumber,goodProperty)
             }
         }
     }
