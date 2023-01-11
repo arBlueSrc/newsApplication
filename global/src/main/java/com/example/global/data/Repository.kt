@@ -53,7 +53,6 @@ interface Repository {
             storeId:String,
             partId:String,
             employeeId:String,
-            propertyNumber: String,
             goodProperty:String
         ):Resource<AddProductResult>
 
@@ -63,6 +62,12 @@ interface Repository {
             propertyNumber:String,
             goodProperty:String
         ):Resource<EditProudect>
+
+        suspend fun takeBack(
+            productId:String,
+            description:String
+        ):Resource<EditProudect>
+
     }
 //
 ////    interface Login {
