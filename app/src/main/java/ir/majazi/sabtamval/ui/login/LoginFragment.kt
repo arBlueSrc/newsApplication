@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
                 text = "در حال بررسی ..."
                 disableButton(
                     backgroundColor = com.example.global.R.color.custom_gray5,
-                    textColor = ir.majazi.sabtamval.R.color.black
+                    textColor = R.color.black
                 )
             }
         }
@@ -67,20 +67,17 @@ class LoginFragment : Fragment() {
                                 text = "ورود"
                                 enableButton(
                                     backgroundColor = com.example.global.R.color.custom_green2,
-                                    textColor = ir.majazi.sabtamval.R.color.white
+                                    textColor = R.color.white
                                 )
                             }
                         }
                         is Resource.Success -> {
-
-
                             if (it.data?.status.toString() == "true"){
                                 withContext(Dispatchers.Main){
                                     Save.data(requireContext(),"userName",binding.edtUserName.text.toString())
                                     Save.data(requireContext(),"password",binding.edtPassword.text.toString())
                                     Navigation.findNavController(binding.root).navigate(R.id.scannerFragment)
                                 }
-
                             }else{
                                 context?.toast("نام کاربری یا رمز عبور اشتباه است")
                             }

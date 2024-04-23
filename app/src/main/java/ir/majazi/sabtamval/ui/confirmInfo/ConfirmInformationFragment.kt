@@ -12,6 +12,7 @@ import com.example.global.network.resource.Resource
 import com.example.global.utils.extensions.dialog
 import com.example.global.utils.extensions.launchAndRepeatWithViewLifecycle
 import com.example.global.utils.extensions.toast
+import com.example.tarashehospitai.data.utils.onBackPressed
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.textview.MaterialTextView
 import com.google.gson.Gson
@@ -35,6 +36,11 @@ class ConfirmInformationFragment : Fragment() {
 
 
         binding = FragmentConfirmInformationBinding.inflate(inflater)
+
+        requireActivity().onBackPressed {
+            Test.array.clear()
+            Navigation.findNavController(requireView()).popBackStack()
+        }
         return binding.root
     }
 
@@ -67,6 +73,7 @@ class ConfirmInformationFragment : Fragment() {
 
         binding.fabConfirmInfo.setOnClickListener {
             sendInfo()
+            Test.array.clear()
         }
 
     }
@@ -75,8 +82,6 @@ class ConfirmInformationFragment : Fragment() {
 
         val gson = Gson()
         val json = gson.toJson(Test.array)
-        Log.i("TAG", "sendInfo: " + Test.array[0].name+Test.array[0].value+Test.array[0].id)
-        Log.i("TAG", "sendInfo: " + Test.array[1].name+Test.array[1].value+Test.array[1].id)
 
         viewModel.addProduct(
             args.goodId.toString(),
@@ -120,6 +125,13 @@ class ConfirmInformationFragment : Fragment() {
             }
         }
     }
+
+
+
+
+
+
+
 
 
 }

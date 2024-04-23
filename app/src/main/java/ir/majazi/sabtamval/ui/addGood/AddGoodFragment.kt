@@ -97,7 +97,7 @@ class AddGoodFragment : Fragment() {
         }
 
         binding.fabAddGood.setOnClickListener {
-checkEmpty()
+        checkEmpty()
 
 
 
@@ -229,9 +229,9 @@ checkEmpty()
     //manage the clickable  list
     private fun listItemClicked(item: Employee) {
         Log.i("TAG", "listItemClicked: "+item.id)
-        person = item.name.toString()
+        person = "${item.name.toString()} ${item.lastName.toString()}"
         employeeId = item.id.toString()
-        binding.autoCompletePerson.setText(item.name.toString())
+        binding.autoCompletePerson.setText("${item?.name.toString()} ${item?.lastName.toString()}")
         dialog.dismiss()
     }
 

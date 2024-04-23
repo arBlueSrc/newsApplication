@@ -21,7 +21,7 @@ class BottomSheetAdapterEmployee(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mList?.get(position)
-        holder.item.text = item?.name
+        holder.item.text = "${item?.name} ${item?.lastName.toString()}"
         holder.item.setOnClickListener {
             name(item!!)
         }
